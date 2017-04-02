@@ -502,15 +502,13 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  var scrollTop = document.body.scrollTop;
-
+  var top = Math.sin(document.body.scrollTop / 1250);
+  // calculate maximum visible pizzas
   var rows = Math.floor(window.innerHeight / 256) + 1;
-  var maxElem = Math.min(items.length, rows * 8);
-
+  var maxElem = Math.min(rows * 8, items.length);
   for (var i = 0; i < maxElem; i++) {
-    var phase = Math.sin((scrollTop / 1250) + (i % 5));
-  //  items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  items[i].style.transform = 'translateX(' + (items[i].basicLeft + 100 * phase) + 'px)';
+    var phase = (top + (i % 5));
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -523,12 +521,8 @@ function updatePositions() {
   }
 }
 
-function delayUpdate() {
-  requestAnimationFrame(updatePositions);
-}
-
 // runs updatePositions on scroll
-window.addEventListener('scroll', delayUpdate);
+window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
