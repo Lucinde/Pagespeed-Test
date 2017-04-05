@@ -449,10 +449,15 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    // all static DOM references outside the loop
+    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var len = randomPizzas.length;
+    // all pizzas are equal, use first pizza to calculate the size
+    var dx = determineDx(randomPizzas[0], size);
+    var newwidth = (randomPizzas[0].offsetWidth + dx) + 'px';
+
+    for (var i = 0; i < len; i++) {
+      randomPizzas[i].style.width = newwidth;
     }
   }
 
@@ -501,9 +506,10 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  // all static DOM references outside the loop
   var items = document.querySelectorAll('.mover');
   var scrollTop = document.body.scrollTop;
-
+  // calculate pizzas on page
   var rows = Math.floor(window.innerHeight / 256) + 1;
   var maxElem = Math.min(items.length, rows * 8);
 
@@ -523,6 +529,7 @@ function updatePositions() {
   }
 }
 
+// use requestAnimationFrame to delay the update to the next frame
 function delayUpdate() {
   requestAnimationFrame(updatePositions);
 }

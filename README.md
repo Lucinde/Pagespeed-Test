@@ -54,5 +54,11 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
 
-### Optimization Process
+# Optimization Process
+
+### Pagespeed
 * Started with optimizing / reducing the size of the images
+* Loaded JS async
+* Reduced file sizes by minimalizing JS and CSS
+* Placed CSS files to the bottom of the page
+* added a htaccess file to enable cache
