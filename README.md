@@ -61,6 +61,7 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * Loaded JS async
 * Reduced file sizes by minimalizing JS and CSS
 * added a htaccess file to enable cache
+* ! Before the pagespeed test the htaccess.txt needs to be changed to .htaccess !
 
 ### Pizzas
 * Made sure there were no forced synchronous layouts in the background and pizza sizer
