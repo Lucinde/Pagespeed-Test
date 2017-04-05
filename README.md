@@ -60,5 +60,9 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * Started with optimizing / reducing the size of the images
 * Loaded JS async
 * Reduced file sizes by minimalizing JS and CSS
-* Placed CSS files to the bottom of the page
 * added a htaccess file to enable cache
+
+### Pizzas
+* Made sure there were no forced synchronous layouts in the background and pizza sizer
+* Calculated how many pizzas are on the screen so we don't have to draw 200 pizzas every time something changes but just the amount of pizzas that are on the screen
+* Added requestAnimationFrame for the background
